@@ -92,7 +92,7 @@ class Contact
      *
      * @ORM\Column(name="birthday", type="date")
      * @Assert\NotBlank()
-//     * @Assert\Date()
+     * @Assert\Date()
      */
     private $birthday;
 

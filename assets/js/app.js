@@ -21,9 +21,9 @@ $(document).ready(function () {
     });
 
     $('.date-picker').datepicker({
-        //altFormat: "dd.mm.yy",
         dateFormat: "dd.mm.yy",
-        //dateFormat: 'yy-mm-dd'
+        changeMonth: true,
+        changeYear: true,
     });
 });
 

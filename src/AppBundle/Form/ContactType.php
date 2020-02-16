@@ -44,7 +44,7 @@ class ContactType extends AbstractType
                 'required' => false,
                 'widget' => 'single_text',
                 'html5' => false,
-                'format' => 'd.M.y',
+                'format' => 'dd.MM.y',
 
                 'attr' => [
                     'class' => 'date-picker',
