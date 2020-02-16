@@ -16,10 +16,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Id</th>
                         <th>Name</th>
-                        <th>Street</th>
-                        <th>Postcode</th>
                         <th>City</th>
                         <th>Country</th>
                         <th>Phone</th>
@@ -31,20 +28,22 @@
                     <tbody>
                     {% for contact in contacts %}
                         <tr>
-                            <td><a href="{{ path('contact_show', { 'id': contact.id }) }}">{{ contact.id }}</a></td>
-                            <td>
+                            <td class="text-nowrap">
                                 <a href="{{ path('contact_show', { 'id': contact.id }) }}">
                                     {{ contact.firstname }} {{ contact.lastname }}
                                 </a>
                             </td>
-                            <td>{{ contact.street }}</td>
-                            <td>{{ contact.postcode }}</td>
                             <td>{{ contact.city }}</td>
                             <td>{{ contact.country }}</td>
                             <td>{{ contact.phone }}</td>
                             <td>{% if contact.birthday %}{{ contact.birthday|date('d.m.Y') }}{% endif %}</td>
-                            <td>{{ contact.email }}</td>
                             <td>
+                                <div class="email" title="{{ contact.email }}">
+                                    <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                                </div>
+                            </td>
+                            <td class="text-nowrap">
+                                <a class="btn btn-info" href="{{ path('contact_show', { 'id': contact.id }) }}">View</a>
                                 <a class="btn btn-warning" href="{{ path('contact_edit', { 'id': contact.id }) }}">Edit</a>
                                 <a class="btn btn-danger btn-delete" href="{{ path('contact_delete', {'id': contact.id}) }}">Delete</a>
                             </td>
@@ -52,6 +51,8 @@
                     {% endfor %}
                     </tbody>
                 </table>
+
+                {{ knp_pagination_render(contacts) }}
             {% endif %}
         </div>
     </div>

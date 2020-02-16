@@ -19,3 +19,9 @@ body {
         max-width: 100%;
     }
 }
+
+.email {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 200px;
+}

@@ -13,7 +13,7 @@ parameters:
 
 framework:
     #esi: ~
-    #translator: { fallbacks: ['%locale%'] }
+    translator: { fallbacks: ['%locale%'] }
     secret: '%secret%'
     router:
         resource: '%kernel.project_dir%/app/config/routing.yml'
@@ -92,3 +92,18 @@ vich_uploader:
             uri_prefix:         '%uploads.picture%'
             upload_destination: '%kernel.root_dir%/../web%uploads.picture%'
             namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+knp_paginator:
+    page_range: 10
+    default_options:
+        page_name: page
+        sort_field_name: sf
+        sort_direction_name: sd
+        distinct: true
+        filter_field_name: ff
+        filter_value_name: fv
+
+    template:
+        pagination: '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig'
+#        sortable: '@KnpPaginator/Pagination/sortable_link.html.twig'
+#        filtration: '@KnpPaginator/Pagination/filtration.html.twig'

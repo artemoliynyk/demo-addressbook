@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Symfony\WebpackEncoreBundle\WebpackEncoreBundle(),
             new \Vich\UploaderBundle\VichUploaderBundle(),
+            new \Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

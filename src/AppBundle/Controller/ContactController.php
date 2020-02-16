@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Contact;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,11 +20,18 @@ class ContactController extends Controller
      * @Route("/", name="index", methods={"GET"})
      * @Route("/contacts", name="contact_list", methods={"GET"})
      */
-    public function indexAction()
+    public function indexAction(Request $request, PaginatorInterface $pagination)
     {
         $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery("SELECT c FROM AppBundle:Contact c");
 
-        $contacts = $em->getRepository('AppBundle:Contact')->findAll();
+        $page = (int) $request->get('page');
+        $page = $page > 0 ? $page : 1;
+
+        $perPage = $this->getParameter('per_page');
+
+
+        $contacts = $pagination->paginate($query, $page, $perPage);
 
         return $this->render('@App/contact/index.html.twig', array(
             'contacts' => $contacts,
