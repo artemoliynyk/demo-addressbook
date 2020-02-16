@@ -166,8 +166,10 @@ class TestDataFixtures implements FixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $userToCreate = 50;
+        $userToCreate = 500;
         for ($i = 1; $i <= $userToCreate; $i++) {
+
+            $timedHash = crc32(microtime());
 
             $firstnameID = array_rand($this->firstnames, 1);
             $firstname = $this->firstnames[$firstnameID];
@@ -182,7 +184,7 @@ class TestDataFixtures implements FixtureInterface
             $city = $this->cities[$cityID];
 
             $postcode = strtoupper(substr(md5(microtime(true)), 1, rand(5, 9)));
-            $phone = (rand(0, 1) ? '+' : '').crc32(microtime());
+            $phone = (rand(0, 1) ? '+' : '').$timedHash;
 
 
             $strCityID = array_rand($this->cities, 1);
@@ -199,7 +201,8 @@ class TestDataFixtures implements FixtureInterface
 
             $bday = new \DateTime("{$year}-{$month}-{$day}");
 
-            $email = strtolower("{$firstname}.{$lastname}@example.com");
+
+            $email = strtolower("{$firstname}.{$lastname}.{$timedHash}@example.com");
 
             $contact = new Contact();
             $contact->setFirstname($firstname);
