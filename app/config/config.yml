@@ -8,6 +8,8 @@ imports:
 parameters:
     locale: en
     app_name: 'Addressbook'
+    uploads.picture: /uploads/picture
+
 
 framework:
     #esi: ~
@@ -43,6 +45,7 @@ twig:
         - 'bootstrap_4_layout.html.twig'
     globals:
         app_name: '%app_name%'
+        uploads_picture: '%uploads.picture%'
 
 # Doctrine Configuration
 doctrine:
@@ -86,5 +89,6 @@ vich_uploader:
 
     mappings:
         contact_picture:
-            uri_prefix:         '/uploads/picture'
-            upload_destination: '%kernel.root_dir%/../web/uploads/picture'
+            uri_prefix:         '%uploads.picture%'
+            upload_destination: '%kernel.root_dir%/../web%uploads.picture%'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer

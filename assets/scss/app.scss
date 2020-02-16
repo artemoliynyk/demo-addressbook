@@ -13,3 +13,9 @@ body {
     line-height: 50px; /* Vertically center the text there */
     background-color: #f5f5f5;
 }
+
+.vich-image {
+    img {
+        max-width: 100%;
+    }
+}

@@ -47,10 +47,13 @@
                     <th>Email</th>
                     <td>{{ contact.email }}</td>
                 </tr>
-                <tr>
-                    <th>Picturefile</th>
-                    <td>{{ contact.pictureFile }}</td>
-                </tr>
+                {% if contact.picture is not empty %}
+                    <tr>
+                        <td colspan="2" class="text-center">
+                            <img src="{{ vich_uploader_asset(contact, 'pictureFile') }}">
+                        </td>
+                    </tr>
+                {% endif %}
                 </tbody>
             </table>
 

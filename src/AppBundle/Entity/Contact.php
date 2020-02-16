@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Vich\UploaderBundle\Entity\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -107,15 +108,16 @@ class Contact
 
     /**
      * @var string
-     * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
-     * @Assert\File(mimeTypes={"image/jpeg", "image/png"}, mimeTypesMessage="Please upload PNG or JPEG image")
+     *
+     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
      */
     private $picture;
 
     /**
-     * @var string
+     * @var File
      *
-     * @ORM\Column(name="picture", type="string", length=255, nullable=true)
+     * @Vich\UploadableField(mapping="contact_picture", fileNameProperty="picture")
+     * @Assert\File(mimeTypes={"image/jpeg", "image/png"}, mimeTypesMessage="Please upload PNG or JPEG image")
      */
     private $pictureFile;
 
@@ -378,18 +380,18 @@ class Contact
     /**
      * @return string
      */
-    public function getPictureFile(): ?string
+    public function getPictureFile()
     {
         return $this->pictureFile;
     }
 
-    /**
-     * @param string $pictureFile
-     */
-    public function setPictureFile(string $pictureFile): void
+    public function setPictureFile($pictureFile): void
     {
-        $this->updated = new \DateTime();
         $this->pictureFile = $pictureFile;
+
+        if ($pictureFile) {
+            $this->updated = new \DateTime();
+        }
     }
 
 

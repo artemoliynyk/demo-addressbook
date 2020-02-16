@@ -10,6 +10,8 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ContactType extends AbstractType
 {
@@ -20,28 +22,28 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('firstname', TextType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('lastname', TextType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('street', TextType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('postcode', TextType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('city', TextType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('country', TextType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('phone', TelType::class, [
-                'required' => false,
+                'required' => true,
             ])
             ->add('birthday', DateType::class, [
-                'required' => false,
+                'required' => true,
                 'widget' => 'single_text',
                 'html5' => false,
                 'format' => 'dd.MM.y',
@@ -51,7 +53,13 @@ class ContactType extends AbstractType
                 ],
             ])
             ->add('email', EmailType::class, [
+                'required' => true,
+            ])
+            ->add('pictureFile', VichImageType::class, [
                 'required' => false,
+                'download_uri' => false,
+                'asset_helper' => false,
+                'delete_label' => 'Remove picture',
             ]);
     }
 
