@@ -43,10 +43,11 @@
                             <td>{{ contact.city }}</td>
                             <td>{{ contact.country }}</td>
                             <td>{{ contact.phone }}</td>
-                            <td>{% if contact.birthday %}{{ contact.birthday|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if contact.birthday %}{{ contact.birthday|date('d.m.Y') }}{% endif %}</td>
                             <td>{{ contact.email }}</td>
                             <td>
-                                <a class="btn btn-warning" href="{{ path('contact_edit', { 'id': contact.id }) }}">edit</a>
+                                <a class="btn btn-warning" href="{{ path('contact_edit', { 'id': contact.id }) }}">Edit</a>
+                                <a class="btn btn-danger btn-delete" href="{{ path('contact_delete', {'id': contact.id}) }}">Delete</a>
                             </td>
                         </tr>
                     {% endfor %}

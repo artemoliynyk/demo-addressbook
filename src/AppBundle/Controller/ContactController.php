@@ -99,7 +99,7 @@ class ContactController extends Controller
     /**
      * Deletes a contact entity.
      *
-     * @Route("/contact/{id}/delete", name="contact_delete", methods={"DELETE"})
+     * @Route("/contact/{id}/delete", name="contact_delete")
      */
     public function deleteAction(Request $request, Contact $contact)
     {
