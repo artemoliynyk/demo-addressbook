@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -11,6 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="contact")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository")
+ * @UniqueEntity(fields={"email"}, message="Contact with this data already exists")
  * @Vich\Uploadable()
  */
 class Contact
@@ -28,6 +30,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="firstname", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $firstname;
 
@@ -35,6 +39,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="lastname", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $lastname;
 
@@ -42,6 +48,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="street", type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      */
     private $street;
 
@@ -49,6 +57,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="postcode", type="string", length=32)
+     * @Assert\NotBlank()
+     * @Assert\Length(min="4")
      */
     private $postcode;
 
@@ -56,6 +66,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="city", type="string", length=100)
+     * @Assert\NotBlank()
      */
     private $city;
 
@@ -63,6 +74,7 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="country", type="string", length=100)
+     * @Assert\NotBlank()
      */
     private $country;
 
@@ -70,6 +82,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="phone", type="string", length=20)
+     * @Assert\NotBlank()
+     * @Assert\Regex(pattern="/^[\+]?[\d]+[\d\s]{3,}[\d]+$/", message="Plese provide valid phone number")
      */
     private $phone;
 
@@ -77,6 +91,8 @@ class Contact
      * @var \DateTime
      *
      * @ORM\Column(name="birthday", type="date")
+     * @Assert\NotBlank()
+//     * @Assert\Date()
      */
     private $birthday;
 
@@ -84,6 +100,8 @@ class Contact
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank()
+     * @Assert\Email()
      */
     private $email;
 

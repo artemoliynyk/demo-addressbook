@@ -11,10 +11,6 @@
             <a class="btn btn-danger btn-delete" href="{{ path('contact_delete', {'id': contact.id}) }}">Delete</a>
             <a class="btn btn-info" href="{{ path('index') }}">Cancel</a>
             {{ form_end(edit_form) }}
-
-
-            {{ form_start(delete_form) }}
-            {{ form_end(delete_form) }}
         </div>
     </div>
 {% endblock %}

@@ -9,13 +9,21 @@
 import '../scss/app.scss';
 
 require('bootstrap');
-
+require('jquery-ui-bundle/jquery-ui.min');
+require('jquery-ui-bundle/jquery-ui.min.css');
 
 $(document).ready(function () {
     $('.btn-delete').click(function (e) {
-        if(!confirm('Are you sure want to delete this contact?')) {
+        if (!confirm('Are you sure want to delete this contact?')) {
             e.preventDefault();
             return false;
         }
     });
+
+    $('.date-picker').datepicker({
+        //altFormat: "dd.mm.yy",
+        dateFormat: "dd.mm.yy",
+        //dateFormat: 'yy-mm-dd'
+    });
 });
+

@@ -19,17 +19,40 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('firstname', TextType::class)
-            ->add('lastname', TextType::class)
-            ->add('street', TextType::class)
-            ->add('postcode', TextType::class)
-            ->add('city', TextType::class)
-            ->add('country', TextType::class)
-            ->add('phone', TelType::class)
-            ->add('birthday', DateType::class, [
-                'format' => 'ddMMMMy'
+            ->add('firstname', TextType::class, [
+                'required' => false,
             ])
-            ->add('email', EmailType::class);
+            ->add('lastname', TextType::class, [
+                'required' => false,
+            ])
+            ->add('street', TextType::class, [
+                'required' => false,
+            ])
+            ->add('postcode', TextType::class, [
+                'required' => false,
+            ])
+            ->add('city', TextType::class, [
+                'required' => false,
+            ])
+            ->add('country', TextType::class, [
+                'required' => false,
+            ])
+            ->add('phone', TelType::class, [
+                'required' => false,
+            ])
+            ->add('birthday', DateType::class, [
+                'required' => false,
+                'widget' => 'single_text',
+                'html5' => false,
+                'format' => 'd.M.y',
+
+                'attr' => [
+                    'class' => 'date-picker',
+                ],
+            ])
+            ->add('email', EmailType::class, [
+                'required' => false,
+            ]);
     }
 
     /**
