@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
+            <h3>New contact</h3>
+
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <input class="btn btn-success" type="submit" value="Create"/>
+            <a class="btn btn-info" href="{{ path('index') }}">Cancel</a>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

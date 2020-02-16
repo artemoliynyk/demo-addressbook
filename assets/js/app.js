@@ -9,3 +9,13 @@
 import '../scss/app.scss';
 
 require('bootstrap');
+
+
+$(document).ready(function () {
+    $('.btn-delete').click(function (e) {
+        if(!confirm('Are you sure want to delete this contact?')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+});

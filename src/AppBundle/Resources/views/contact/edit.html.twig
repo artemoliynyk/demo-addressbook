@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-lg-8 offset-lg-2">
+            <h3>Edit contact </h3>
+
+            {{ form_start(edit_form) }}
+            {{ form_widget(edit_form) }}
+            <input class="btn btn-success" type="submit" value="Save"/>
+            <a class="btn btn-danger btn-delete" href="{{ path('contact_delete', {'id': contact.id}) }}">Delete</a>
+            <a class="btn btn-info" href="{{ path('index') }}">Cancel</a>
+            {{ form_end(edit_form) }}
+
+
+            {{ form_start(delete_form) }}
+            {{ form_end(delete_form) }}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <h3>Contact</h3>
+
+            <table class="table table-striped">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ contact.id }}</td>
+                </tr>
+                <tr>
+                    <th>Firstname</th>
+                    <td>{{ contact.firstname }}</td>
+                </tr>
+                <tr>
+                    <th>Lastname</th>
+                    <td>{{ contact.lastname }}</td>
+                </tr>
+                <tr>
+                    <th>Street</th>
+                    <td>{{ contact.street }}</td>
+                </tr>
+                <tr>
+                    <th>Postcode</th>
+                    <td>{{ contact.postcode }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ contact.city }}</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>{{ contact.country }}</td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td>{{ contact.phone }}</td>
+                </tr>
+                <tr>
+                    <th>Birthday</th>
+                    <td>{% if contact.birthday %}{{ contact.birthday|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ contact.email }}</td>
+                </tr>
+                <tr>
+                    <th>Picturefile</th>
+                    <td>{{ contact.pictureFile }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <a class="btn btn-warning" href="{{ path('contact_edit', { 'id': contact.id }) }}">Edit</a>
+            <a class="btn btn-danger btn-delete" href="{{ path('contact_delete', {'id': contact.id}) }}">Delete</a>
+            <a class="btn btn-info" href="{{ path('index') }}">Back to the list</a>
+        </div>
+    </div>
+{% endblock %}

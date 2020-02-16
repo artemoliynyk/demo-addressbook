@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col">
+
+            <h3>Contacts</h3>
+
+            <a class="btn btn-success float-right" href="{{ path('contact_new') }}">New contact</a>
+            <div class="clearfix"></div>
+            <br>
+
+            {% if contacts is empty %}
+                <div class="alert alert-info">No records yet</div>
+            {% else %}
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Street</th>
+                        <th>Postcode</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Phone</th>
+                        <th>Birthday</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for contact in contacts %}
+                        <tr>
+                            <td><a href="{{ path('contact_show', { 'id': contact.id }) }}">{{ contact.id }}</a></td>
+                            <td>
+                                {{ contact.pictureFile }}
+                                <a href="{{ path('contact_show', { 'id': contact.id }) }}">
+                                    {{ contact.firstname }} {{ contact.lastname }}
+                                </a>
+                            </td>
+                            <td>{{ contact.street }}</td>
+                            <td>{{ contact.postcode }}</td>
+                            <td>{{ contact.city }}</td>
+                            <td>{{ contact.country }}</td>
+                            <td>{{ contact.phone }}</td>
+                            <td>{% if contact.birthday %}{{ contact.birthday|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{{ contact.email }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{{ path('contact_edit', { 'id': contact.id }) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
