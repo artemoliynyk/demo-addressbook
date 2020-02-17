@@ -16,13 +16,30 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>City</th>
-                        <th>Country</th>
-                        <th>Phone</th>
-                        <th>Birthday</th>
-                        <th>Email</th>
-                        <th>Actions</th>
+                        <th class="{{ contacts.isSorted('c.firstname') ? 'sorted' : '' }}" nowrap="true">
+                            {{ knp_pagination_sortable(contacts, 'First name', 'c.firstname') }}
+                        </th>
+                        <th class="{{ contacts.isSorted('c.lastname') ? 'sorted' : '' }}" nowrap="true">
+                            {{ knp_pagination_sortable(contacts, 'Last name', 'c.lastname') }}
+                        </th>
+                        <th class="{{ contacts.isSorted('c.city') ? 'sorted  : '}}">
+                            {{ knp_pagination_sortable(contacts, 'City', 'c.city') }}
+                        </th>
+                        <th class="{{ contacts.isSorted('c.country') ? 'sorted  : '}}">
+                            {{ knp_pagination_sortable(contacts, 'Country', 'c.country') }}
+                        </th>
+                        <th class="{{ contacts.isSorted('c.phone') ? 'sorted  : '}}">
+                            {{ knp_pagination_sortable(contacts, 'Phone', 'c.phone') }}
+                        </th>
+                        <th class="{{ contacts.isSorted('c.birthday') ? 'sorted  : '}}">
+                            {{ knp_pagination_sortable(contacts, 'Birthday', 'c.birthday') }}
+                        </th>
+                        <th class="{{ contacts.isSorted('c.email') ? 'sorted  : '}}">
+                            {{ knp_pagination_sortable(contacts, 'Email', 'c.email') }}
+                        </th>
+                        <th>
+                            Actions
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -30,7 +47,12 @@
                         <tr>
                             <td class="text-nowrap">
                                 <a href="{{ path('contact_show', { 'id': contact.id }) }}">
-                                    {{ contact.firstname }} {{ contact.lastname }}
+                                    {{ contact.firstname }}
+                                </a>
+                            </td>
+                            <td class="text-nowrap">
+                                <a href="{{ path('contact_show', { 'id': contact.id }) }}">
+                                    {{ contact.lastname }}
                                 </a>
                             </td>
                             <td>{{ contact.city }}</td>
