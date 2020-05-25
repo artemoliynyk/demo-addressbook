@@ -20,7 +20,7 @@ The address book should contain the following data:
 
 Please use the following techniques:
 * Symfony 3.4
-* Doctrine
+* Doctrine with SQLite
 * Twig
 * PHP
 
@@ -50,7 +50,7 @@ You should not receive any error messages.
 # Application deploy
 After installation complete you will need to create database structure, compile assets and add demo data (optional)
 
-* Create DB structure with this command: `php ./bin/console doctrine:schema:update --force` 
+* Create DB structure with this command: `php ./bin/console doctrine:migration:migrate` 
 * Compile webpack-encore CSS and JS assets with yarn: `yarn encore prod`
 * On Apache server – create .htaccess or copy (linux command): `cp web/.htaccess.prod web/.htaccess`
 
