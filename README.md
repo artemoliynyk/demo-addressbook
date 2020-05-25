@@ -3,6 +3,28 @@ Address Book Demo App
 
 Demo app based on Symfony 3.4
 
+# Task requests
+Please develop an address book in which you can add, edit and delete entries. You should also have an overview of all contacts.
+
+The address book should contain the following data:
+* Firstname
+* Lastname
+* Street and number
+* Zip
+* City
+* Country
+* Phonenumber
+* Birthday
+* Email address
+* Picture (optional)
+
+Please use the following techniques:
+* Symfony 3.4
+* Doctrine
+* Twig
+* PHP
+
+
 # App details
 This demo app are build on Symfony 3.4 with following libraries:
 * **Webpack Encore bundle** – JS, CSS, SCSS compilation with manifest and versioning
