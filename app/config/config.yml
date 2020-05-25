@@ -51,7 +51,7 @@ twig:
 doctrine:
     dbal:
         driver: pdo_sqlite
-        path: '%kernel.project_dir%/app/app.db'
+        path: '%kernel.project_dir%/var/app.db'
         charset: UTF8
 
     orm:
