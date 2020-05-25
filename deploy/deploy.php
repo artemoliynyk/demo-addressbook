@@ -8,11 +8,11 @@ inventory('hosts.yml');
 
 // Project name
 set('application', function () {
-    return getenv('Demo Questionnaire');
+    return getenv('Demo Addressbook');
 });
 
 // Project repository
-set('repository', 'https://github.com/artemoliynyk/demo-questionnaire.git');
+set('repository', 'https://github.com/artemoliynyk/demo-addressbook/');
 
 // [Optional] Allocate tty for git clone. Default value is false.
 set('git_tty', true);

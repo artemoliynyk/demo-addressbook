@@ -23,8 +23,6 @@
 /web/uploads/picture/*
 !/web/uploads/picture/.gitignore
 
-/web/.htaccess
-
 /node_modules/
 
 /deploy/hosts.yml
